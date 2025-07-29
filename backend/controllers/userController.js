@@ -5,11 +5,13 @@ getUserProfile: Fetches the profile of the authenticated user.
 updateUserProfile: Allows authenticated users to update their profile.
 getUsers: (Admin only) Fetches all users.
 deleteUser: (Admin only) Deletes a user.
- */
+
+*/
 
 
 import userModel from "../models/userModel.js"
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 //controller to the delete user Auth
 
