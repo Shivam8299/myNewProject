@@ -81,7 +81,17 @@ async function registerUser(req, res) {
 async function getUserProfile(req, res) {
   try {
     const userProfile = req.user;
-    console.log(updateUserProfile)
+    if(!userProfile){
+      return res.status(400).json({
+        success:false,
+        message:"user not found"
+      })
+    }
+    let profile = await userModel.findById(userProfile.id)
+    res.status(200).json({
+      success:true,
+      profile
+    })
   } catch (error) {
       res.status(500).json({
       success: false,
@@ -93,7 +103,37 @@ async function getUserProfile(req, res) {
 //controller to the update user profile
 async function updateUserProfile(req, res) {
   try {
-  } catch (error) {}
+    
+    const user = await userModel.findById(req.user.id)
+    if(!user){
+      return res.status(404).json({
+        success:false,
+        message:"user not found"
+      })
+    }
+    // for update user
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.phone = req.body.phone || user.phone;
+
+    // password update
+    if(req.body.password){
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(req.body.password,salt)
+    }
+    const updatedUser = await user.save();
+    res.status(200).json({
+      success:true,
+      message:"profile updated successfully",
+      updatedUser
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "internal server error",
+    });
+  }
 }
 
 async function authUser(req, res) {
