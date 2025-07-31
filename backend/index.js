@@ -3,6 +3,7 @@ import cors from 'cors'
 import 'dotenv/config'
 import dbConnection from './config/db.js'
 import router from './routes/userRoute.js'
+import router from './routes/productRoute.js'
 
 const app = express()
 
@@ -11,6 +12,7 @@ app.use(express.json())
 
 //user api endpints
 app.use("/api/user",router);
+app.use('api/product',router)
 
 
 
