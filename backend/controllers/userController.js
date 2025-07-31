@@ -17,7 +17,8 @@ import bcrypt from "bcrypt";
 //controller to the register new user
 async function registerUser(req, res) {
   try {
-    const { name, email, password, phone } = req.body;
+    console.log(req.body)
+    const {name, email, password, phone, isAdmin } = req.body;
     if (!name || !email || !password || !phone) {
       return res.status(400).json({
         success: false,
@@ -51,7 +52,7 @@ async function registerUser(req, res) {
       name,
       email,
       password: hashedPassword,
-      isAdmin: false,
+      isAdmin,
       phone,
     });
 
@@ -69,6 +70,7 @@ async function registerUser(req, res) {
       token,
     });
   } catch (error) {
+    console.error(error)
     res.status(500).json({
       success: false,
       message: error.message,

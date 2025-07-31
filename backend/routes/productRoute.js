@@ -1,12 +1,15 @@
 import express from 'express'
-import { getProducts, getSingleProductById, createProduct, updateProduct, deleteProduct } from '../controllers/productController';
+import { getProducts, getSingleProductById, createProduct, updateProduct, deleteProduct } from '../controllers/productController.js';
+import { jwtAuthMiddleware } from '../middleware/authMiddleware.js';
+import upload from '../middleware/multer.js';
+import isAdmin from '../middleware/admin.js';
 
-const router = express.Router();
+const productRouter = express.Router();
 
-router.get('/all',getProducts);
-router.get('/data',getSingleProductById);
-router.post('/add',createProduct);
-router.put('/update', updateProduct);
-router.delete('/delete',deleteProduct);
+productRouter.get('/all',jwtAuthMiddleware, getProducts);
+productRouter.get('/data/:id',getSingleProductById);
+productRouter.post('/add',jwtAuthMiddleware, isAdmin, upload.single('image'), createProduct);
+productRouter.put('/update/:id', updateProduct);
+productRouter.delete('/delete/:id',deleteProduct);
 
-export default router
+export default productRouter

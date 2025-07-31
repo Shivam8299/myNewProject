@@ -30,8 +30,8 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    images:{
-        type:[String],
+    image:{
+        type:String,
         required:true
     },
     brand:{
@@ -40,8 +40,7 @@ const productSchema = new mongoose.Schema({
     },
     category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Category", // Reference Category model
-    required: true
+    ref: "Category" // Reference Category model
   },
     description:{
         type:String,
