@@ -9,7 +9,7 @@ const productRouter = express.Router();
 productRouter.get('/all',jwtAuthMiddleware, getProducts);
 productRouter.get('/data/:id',getSingleProductById);
 productRouter.post('/add',jwtAuthMiddleware, isAdmin, upload.single('image'), createProduct);
-productRouter.put('/update/:id', updateProduct);
-productRouter.delete('/delete/:id',deleteProduct);
+productRouter.put('/update/:id',jwtAuthMiddleware,isAdmin ,upload.single('image'), updateProduct);
+productRouter.delete('/delete/:id',jwtAuthMiddleware, isAdmin,deleteProduct);
 
 export default productRouter

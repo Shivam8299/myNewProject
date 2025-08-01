@@ -8,6 +8,7 @@ deleteUser: (Admin only) Deletes a user.
 
 */
 
+import isAdmin from "../middleware/admin.js";
 import { generateToken, comparePassword} from "../middleware/authMiddleware.js";
 import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
@@ -62,6 +63,7 @@ async function registerUser(req, res) {
       id: user._id,
       username: user.name,
       email: user.email,
+      isAdmin : user.isAdmin
     };
     const token = generateToken(payload);
     res.status(201).json({
@@ -159,6 +161,7 @@ async function authUser(req, res) {
     const payload = {
       id: user._id,
       email: user.email,
+      isAdmin:user.isAdmin
     };
     const token = generateToken(payload);
     res.status(200).json({
