@@ -17,7 +17,8 @@ function App() {
     <div>
       <Offer/>
       <Navbar/>
-      <Routes>
+      <div  className="px-2 md:px-10">
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route  path="/rings" element={<Rings/>}/>
         <Route path="/earrings" element={<Earrings />} />
@@ -28,6 +29,7 @@ function App() {
         <Route path="/all" element={<ShopAll/>} />
         <Route path="/sale" element={<Sale/>} />
       </Routes>
+      </div>
     </div>
   );
 }

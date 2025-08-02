@@ -7,11 +7,11 @@ import machki from '../assets/title.webp'
 
 function Navbar() {
   return (
-    <div className='flex justify-between px-16 items-center cursor-pointer'>
+    <div className='flex justify-between px-4 sm:px-12 md:px-16 items-center cursor-pointer'>
         <div className='w-32'>
         <img src={machki} alt="" />
         </div>
-        <div className='flex gap-6 font-base text-gray-700'>
+        <div className='hidden md:flex gap-6 font-base text-gray-700'>
         <NavLink to={"/"} ></NavLink>
         <NavLink to={"/all"} >Shop All</NavLink>
         <NavLink to={"/earrings"} >Earrings</NavLink>
