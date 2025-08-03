@@ -1,11 +1,16 @@
 import React from 'react'
-import assets from "../assets/home_page.jpg"
+import home1 from "../assets/home_page.jpg"
+import home2 from "../assets/home2_page.jpg"
+
 
 function Home() {
   return (
     <div>
-      <img className='w-full' src={assets} alt="" />
-      <h1 className="font-playfair text-3xl">Trending Now</h1>
+      <div>
+        <img className='w-full' src={home1} alt="" />
+      </div>
+      
+  
     </div>
   )
 }

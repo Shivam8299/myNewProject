@@ -1,17 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { FiSearch, FiUser, FiShoppingBag } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 import machki from '../assets/title.webp'
 
 
 function Navbar() {
+  const navigate = useNavigate()
   return (
-    <div className='flex justify-between px-4 sm:px-12 md:px-16 items-center cursor-pointer'>
+    <div className='flex justify-between px-2 md:px-4 lg:px-8 items-center cursor-pointer'>
         <div className='w-32'>
         <img src={machki} alt="" />
         </div>
-        <div className='hidden md:flex gap-6 font-base text-gray-700'>
+        <div className='hidden md:flex gap-10 text-base font-serif text-amber-800'>
         <NavLink to={"/"} ></NavLink>
         <NavLink to={"/all"} >Shop All</NavLink>
         <NavLink to={"/earrings"} >Earrings</NavLink>
@@ -21,7 +23,7 @@ function Navbar() {
         </div>
         <div className='flex gap-8 text-gray-700'>
           <FiSearch size={24} />
-          <FiUser size={24} />
+          <FiUser onClick={()=>navigate("/login")} size={24} />
           <FiShoppingBag size={24} />
         </div>
     </div>

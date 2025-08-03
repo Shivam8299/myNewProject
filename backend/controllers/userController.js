@@ -20,7 +20,7 @@ async function registerUser(req, res) {
   try {
     console.log(req.body)
     const {name, email, password, phone, isAdmin } = req.body;
-    if (!name || !email || !password || !phone) {
+    if (!name || !email || !password ) {
       return res.status(400).json({
         success: false,
         message: "all details are required",

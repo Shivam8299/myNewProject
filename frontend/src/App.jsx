@@ -11,13 +11,14 @@ import Necklaces from "./pages/Necklaces";
 import ShopAll from "./pages/ShopAll";
 import Rings from "./pages/Rings";
 import Sale from "./pages/Sale";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div>
+    <div className="bg-gray-100">
       <Offer/>
       <Navbar/>
-      <div  className="px-2 md:px-10">
+      <div>
         <Routes>
         <Route path="/" element={<Home />} />
         <Route  path="/rings" element={<Rings/>}/>
@@ -28,6 +29,8 @@ function App() {
         <Route path="/placeOrder/:id" element={<PlaceOrder />} />
         <Route path="/all" element={<ShopAll/>} />
         <Route path="/sale" element={<Sale/>} />
+         <Route path="/login" element={<Login/>} />
+
       </Routes>
       </div>
     </div>
