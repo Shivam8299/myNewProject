@@ -1,27 +1,47 @@
-import React from 'react'
-import { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
-
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 function AllProducts() {
-    const {products,baseUrl} = useContext(AppContext)
-    console.log(products)
-  return (
-    <div>
-        <p className='text-4xl font-semibold font-serif my-8 '>Trending Now</p>
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6 bg-amber-600'>
-            {products.map((item)=>(
-            <div 
-            key={item._id || item.id}
-            className='bg-white shadow-2xl p-4'
-            >
-                <img src={`${baseUrl}/${item.image.replace(/\\/g, '/')}`} alt="" />
-                <p className='mb-3'>{item.description}</p>
+    const { products, baseUrl } = useContext(AppContext);
+
+    return (
+        <div className='min-h-screen bg-white py-10 px-2 md:px-6'>
+            <p className='text-3xl md:text-4xl font-semibold font-serif px-10 py-10'>
+                Trending Now
+            </p>
+
+            <div className='container mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6'>
+                {products.map((item) => (
+                    <div
+                        key={item._id || item.id}
+                        className='bg-white border border-gray-300  rounded-sm overflow-hidden transition-shadow duration-300 cursor-pointer group pb-12'
+                    >
+                        <div className='w-full  overflow-hidden flex items-center justify-center'>
+                            <img
+                                src={`${baseUrl}/${item.image.replace(/\\/g, '/')}`}
+                                alt={item.name || "product"}
+                                className=' group-hover:scale-105 transition-transform duration-300'
+                            />
+                        </div>
+
+                        <div className='p-2 '>
+                            <h3 className=' text-sm md:text-base text-gray-600 hover:underline cursor-pointer truncate'>
+                                {item.name || "Product Name"}
+                            </h3>
+
+                            {/* Optional: Add price if available */}
+                            {item.price && (
+                                <p className='text-gray-600 text-base md:text-lg mt-1'>
+                                    ₹{item.price}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                ))}
             </div>
-        ))}
+            <button>View All</button>
         </div>
-    </div>
-  )
+    );
 }
 
-export default AllProducts
+export default AllProducts;
