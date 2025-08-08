@@ -12,7 +12,7 @@ import productModel from "../models/productModel.js";
 async function getProducts (req, res){
     try {
         const data = await productModel.find()
-        if (products.length === 0) {
+        if (data.length === 0) {
             return res.status(404).json({
                 success: false,
                 message: "No products found"

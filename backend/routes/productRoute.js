@@ -6,7 +6,7 @@ import isAdmin from '../middleware/admin.js';
 
 const productRouter = express.Router();
 
-productRouter.get('/all',jwtAuthMiddleware, getProducts);
+productRouter.get('/all', getProducts);
 productRouter.get('/data/:id',getSingleProductById);
 productRouter.post('/add',jwtAuthMiddleware, isAdmin, upload.single('image'), createProduct);
 productRouter.put('/update/:id',jwtAuthMiddleware,isAdmin ,upload.single('image'), updateProduct);

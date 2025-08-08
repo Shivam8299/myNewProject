@@ -9,7 +9,7 @@ import machki from '../assets/title.webp'
 function Navbar() {
   const navigate = useNavigate()
   return (
-    <div className='flex justify-between px-2 md:px-4 lg:px-8 items-center cursor-pointer'>
+    <div className='flex justify-between px-2 md:px-4 lg:px-8 items-center bg-white cursor-pointer'>
         <div className='w-32'>
         <img src={machki} alt="" />
         </div>
